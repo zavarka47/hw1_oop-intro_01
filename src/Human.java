@@ -2,10 +2,12 @@ public class Human {
     String name;
     int yearOfBirth;
     String town;
-    Human (String name, int yearOfBirth, String town) {
+    String jobTitle;
+    Human (String name, int yearOfBirth, String town, String jobTitle) {
         this.name = name;
         this.yearOfBirth = yearOfBirth;
         this.town = town;
+        this.jobTitle = jobTitle;
     }
 
     public String getName() {
@@ -20,8 +22,13 @@ public class Human {
         return this.town;
     }
 
+    public String getJobTitle() {
+        return this.jobTitle;
+    }
+
     public String toString () {
-        return "Hello! My mane is " + name + " I`m from " + town + " I was " + yearOfBirth + " let's get acquainted!";
+        return "Hello! My mane is " + name + " I`m from " + town + " I was " + yearOfBirth +
+                " I`m " + jobTitle + " let's get acquainted!";
 
     }
 

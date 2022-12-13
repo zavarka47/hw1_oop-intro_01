@@ -2,7 +2,11 @@ public class HumanService {
 
     public static void printHuman(Human[] humans) {
         for (int i = 0; i < humans.length; i++) {
-            System.out.println("Hello! My mane is " + addSpaceToName(humans[i].getName(), humans) + " I`m from " + addSpaceToTown(humans[i].getTown(), humans) + " I was " + humans[i].getYearOfBirth() + " let's get acquainted!");}
+            System.out.println("Hello! My mane is " + addSpaceToName(humans[i].getName(), humans) +
+                    " I`m from " + addSpaceToTown(humans[i].getTown(), humans) +
+                    " I was " + humans[i].getYearOfBirth() +
+                    " I`m " + addSpaceToJobTitle(humans[i].getJobTitle(), humans) +
+                    " let's get acquainted!");}
 
         }
     public static int maxLengthName(Human[] humans) {
@@ -44,4 +48,30 @@ public class HumanService {
         }
         return fullTown + "...";
     }
+
+    public static int maxLengthJobTitle (Human[] humans) {
+        int maxLengthJobTitle = humans[0].getJobTitle().length();
+        for (int i = 0; i < humans.length; i++) {
+            if (maxLengthJobTitle < humans[i].getJobTitle().length()){
+                maxLengthJobTitle = humans[i].getJobTitle().length();
+            }
+        }
+        return maxLengthJobTitle;
+    }
+
+   public static String addSpaceToJobTitle (String jobTitle, Human[] humans) {
+        int max = maxLengthJobTitle(humans);
+        String fullJobTitle = jobTitle;
+        if (jobTitle.length() < max){
+            for (int i = 0; i < (max - jobTitle.length()); i++) {
+                fullJobTitle = fullJobTitle + ".";}
+        }
+       if (jobTitle.startsWith("a") || jobTitle.startsWith("e") || jobTitle.startsWith("i") || jobTitle.startsWith("o")
+                || jobTitle.startsWith("u") || jobTitle.startsWith("y")) {
+            fullJobTitle = "an " + fullJobTitle;
+        } else {
+            fullJobTitle = "a " + fullJobTitle;
+        }
+        return fullJobTitle + "...";}
+
 }
