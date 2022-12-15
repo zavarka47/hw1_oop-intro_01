@@ -5,9 +5,13 @@ public class Human {
     String jobTitle;
     Human (String name, int yearOfBirth, String town, String jobTitle) {
         this.name = name;
-        this.yearOfBirth = yearOfBirth;
+        this.yearOfBirth = 0;
         this.town = town;
         this.jobTitle = jobTitle;
+        checkString(name);
+        checkString(town);
+        checkString(jobTitle);
+        checkYearOdBirth(yearOfBirth);
     }
 
     public String getName() {
@@ -32,4 +36,15 @@ public class Human {
 
     }
 
-}
+    // Методы check
+     private void checkYearOdBirth (int yearOfBirth) {
+         if (yearOfBirth < 0) {
+             throw new IllegalArgumentException("Информация указана не верно");}
+     }
+
+     private void checkString (String string) {
+         if (string==null || string.isBlank()) {
+             throw new IllegalArgumentException("Информация не указана");}
+         }
+     }
+

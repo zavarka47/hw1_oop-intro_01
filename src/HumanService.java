@@ -62,16 +62,17 @@ public class HumanService {
    public static String addSpaceToJobTitle (String jobTitle, Human[] humans) {
         int max = maxLengthJobTitle(humans);
         String fullJobTitle = jobTitle;
+       if (jobTitle.startsWith("a") || jobTitle.startsWith("e") || jobTitle.startsWith("i") || jobTitle.startsWith("o")
+               || jobTitle.startsWith("u") || jobTitle.startsWith("y")) {
+           fullJobTitle = "an " + fullJobTitle;
+       } else {
+           fullJobTitle = "a " + fullJobTitle;
+       }
         if (jobTitle.length() < max){
             for (int i = 0; i < (max - jobTitle.length()); i++) {
                 fullJobTitle = fullJobTitle + ".";}
         }
-       if (jobTitle.startsWith("a") || jobTitle.startsWith("e") || jobTitle.startsWith("i") || jobTitle.startsWith("o")
-                || jobTitle.startsWith("u") || jobTitle.startsWith("y")) {
-            fullJobTitle = "an " + fullJobTitle;
-        } else {
-            fullJobTitle = "a " + fullJobTitle;
-        }
+
         return fullJobTitle + "...";}
 
 }
